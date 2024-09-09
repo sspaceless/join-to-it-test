@@ -10,13 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "D": "^1.0.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "compose-function": "^3.0.3",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "react": "^18.3.1",
+    "react-big-calendar": "^1.13.4",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "vite-tsconfig-paths": "^5.0.1"
   },
@@ -24,6 +26,7 @@
     "@eslint/js": "^9.9.0",
     "@types/compose-function": "^0.0.33",
     "@types/react": "^18.3.3",
+    "@types/react-big-calendar": "^1.8.10",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
@@ -38,5 +41,5 @@
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.4.1"
 }

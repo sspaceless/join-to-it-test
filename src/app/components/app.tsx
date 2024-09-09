@@ -1,3 +1,10 @@
+import { Layout } from "~/core/theme";
+import { Calendar } from "~/modules/calendar";
+
 export const App: React.FC = () => {
-  return <div>lol</div>;
+  return (
+    <Layout>
+      <Calendar />
+    </Layout>
+  );
 };
