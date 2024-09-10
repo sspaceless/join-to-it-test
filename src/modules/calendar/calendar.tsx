@@ -21,7 +21,10 @@ type MyEvent = Event & {
 export const Calendar: React.FC = () => {
   const [events, setEvents] = React.useState<MyEvent[]>([]);
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-  const [selectedSlotInfo, setSelectedSlotInfo] = React.useState<SlotInfo>();
+  const [selectedSlotInfo, setSelectedSlotInfo] = React.useState({
+    start: new Date(),
+    position: { x: 0, y: 0 },
+  });
 
   const handleEventResize: withDragAndDropProps["onEventResize"] = ({ event, start, end }) => {
     const myEvent = event as MyEvent;
@@ -72,14 +75,31 @@ export const Calendar: React.FC = () => {
     });
   };
 
-  const handleSelectEvent = React.useCallback((event: Event) => window.alert(event.title), []);
+  // const handleSelectEvent = React.useCallback(
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   (event: Event, e: any) => {
+  //     if (isPopoverOpen) {
+  //       return;
+  //     }
+
+  //     setSelectedSlotInfo({
+  //       start: event.start ?? new Date(),
+  //       position: { x: e.clientX, y: e.clientY },
+  //     });
+  //     setIsPopoverOpen(true);
+  //   },
+  //   [isPopoverOpen],
+  // );
 
   const handleSelectSlot = (slotInfo: SlotInfo) => {
     if (isPopoverOpen) {
       return;
     }
 
-    setSelectedSlotInfo(slotInfo);
+    setSelectedSlotInfo({
+      start: slotInfo.start,
+      position: { x: slotInfo?.box?.x ?? 0, y: slotInfo?.box?.y ?? 0 },
+    });
     setIsPopoverOpen(true);
   };
 
@@ -112,14 +132,11 @@ export const Calendar: React.FC = () => {
           selectable
           onEventDrop={handleEventDrop}
           onEventResize={handleEventResize}
-          onSelectEvent={handleSelectEvent}
+          // onSelectEvent={handleSelectEvent}
           onSelectSlot={handleSelectSlot}
         />
 
-        <Popover
-          isOpen={isPopoverOpen}
-          position={{ x: selectedSlotInfo?.box?.x ?? 0, y: selectedSlotInfo?.box?.y ?? 0 }}
-        >
+        <Popover isOpen={isPopoverOpen} position={selectedSlotInfo.position}>
           <EditEventForm
             initialValues={{
               date: dayjs(selectedSlotInfo?.start).format("YYYY-MM-DD"),
