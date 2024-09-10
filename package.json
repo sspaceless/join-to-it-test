@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -25,6 +27,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/compose-function": "^0.0.33",
+    "@types/gh-pages": "^6",
     "@types/react": "^18.3.3",
     "@types/react-big-calendar": "^1.8.10",
     "@types/react-dom": "^18.3.0",
@@ -34,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "gh-pages": "^6.1.1",
     "globals": "^15.9.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
